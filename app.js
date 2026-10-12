@@ -5,18 +5,20 @@ const indexRouter = require("./routes/indexRouter");
 const app = express();
 const PORT = 3000;
 
+// configure EJS
 app.set("view engine", "ejs");
-
 app.set("views", path.join(__dirname, "views"));
 
-// serve static files, such as CSS
+// serve static files
 app.use(express.static(path.join(__dirname, "public")));
 
-// form data logic here
-
-// router
+// connect the router
 app.use("/", indexRouter);
 
-app.listen(PORT, () => {
+// start the server
+app.listen(PORT, (error) => {
+  if (error) {
+    throw error;
+  }
   console.log(`Message app listening on port ${PORT}`);
 });

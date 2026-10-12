@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+// sample messages
 const messages = [
   {
     text: "Hello everyone!",
@@ -14,10 +15,12 @@ const messages = [
   },
 ];
 
+// display main message board
 router.get("/", (req, res) => {
-  res.send(
-    messages.map((message) => `${message.user}: ${message.text}`).join("\n"),
-  );
+  res.render("index", {
+    title: "Message Board",
+    messages: messages,
+  });
 });
 
 module.exports = router;
