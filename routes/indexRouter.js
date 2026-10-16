@@ -4,23 +4,39 @@ const router = express.Router();
 // sample messages
 const messages = [
   {
-    text: "Hello everyone!",
-    user: "Alice",
+    text: "Hi there!",
+    user: "Amando",
     added: new Date(),
   },
   {
-    text: "Welcome to the message board.",
-    user: "Bob",
+    text: "Hello World!",
+    user: "Charles",
     added: new Date(),
   },
 ];
 
-// display main message board
 router.get("/", (req, res) => {
   res.render("index", {
-    title: "Message Board",
+    title: "Mini Messageboard",
     messages: messages,
   });
+});
+
+router.get("/new", (req, res) => {
+  res.render("form");
+});
+
+router.post("/new", (req, res) => {
+  const messageUser = req.body.messageUser;
+  const messageText = req.body.messageText;
+
+  messages.push({
+    text: messageText,
+    user: messageUser,
+    added: new Date(),
+  });
+
+  res.redirect("/");
 });
 
 module.exports = router;

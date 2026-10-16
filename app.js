@@ -9,6 +9,9 @@ const PORT = 3000;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+//parse form data
+app.use(express.urlencoded({ extended: true }));
+
 // serve static files
 app.use(express.static(path.join(__dirname, "public")));
 
