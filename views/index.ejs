@@ -6,33 +6,22 @@
     <title><%= title %></title>
 </head>
 <body>
-    <h1><%= title %></h1>
+<h1><%= title %></h1>
 
-    <p>
-        <a href="/new">Create a New Message</a>
-    </p>
+<a href="/new">Create a new message</a>
 
-    <h2>Messages</h2>
+<ul>
+<% messages.forEach((message) => { %>
+    <li>
+      <strong><%= message.user %></strong>
+      <p><%= message.text %></p>
+      <small><%= message.added.toLocaleString() %></small>
 
-    <ul>
-        <% messages.forEach((message, index) => { %>
-            <li>
-                <p>
-                    <strong>Author:</strong>
-                    <%= message.user %>
-                </p>
-
-                <p>
-                    <strong>Message:</strong>
-                    <%= message.text %>
-                </p>
-
-                <p>
-                    <strong>Date added:</strong>
-                    <%= message.added.toLocaleString() %>
-                </p>
-            </li>
-        <% }); %>
-    </ul>
+      <a href="/message/<%= message.id %>">
+        <button type="button">Open</button>
+      </a>
+    </li>
+<% }) %>
+</ul>
 </body>
 </html>
