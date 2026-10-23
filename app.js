@@ -19,9 +19,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 
 // start the server
-app.listen(PORT, (error) => {
-  if (error) {
-    throw error;
-  }
-  console.log(`Message app listening on port ${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
